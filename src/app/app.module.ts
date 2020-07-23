@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,7 +10,12 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, CategoriesComponent],
-  imports: [BrowserModule, AppRoutingModule, MDBBootstrapModule.forRoot()],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    MDBBootstrapModule.forRoot(),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
