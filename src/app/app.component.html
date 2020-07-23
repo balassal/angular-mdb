@@ -3,22 +3,35 @@
   SideClass="navbar navbar-expand-md navbar-dark unique-color fixed-top"
 >
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" href="#">Blog</a></mdb-navbar-brand>
+  <mdb-navbar-brand>
+    <a class="navbar-brand" routerLink="/">
+      Blog
+    </a>
+  </mdb-navbar-brand>
 
   <!-- Collapsible content -->
   <links>
     <!-- Links -->
     <ul class="navbar-nav text-center">
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect
-          >Home<span class="sr-only">(current)</span></a
+        <a
+          class="nav-link waves-light"
+          mdbWavesEffect
+          routerLink="/"
+          routerLinkActive="active"
         >
+          Home
+          <span class="sr-only">(current)</span>
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect>Features</a>
+        <a class="nav-link waves-light" mdbWavesEffect>Categories</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>
+        <a class="nav-link waves-light" mdbWavesEffect>Posts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect>Users</a>
       </li>
     </ul>
     <!-- Links -->
@@ -26,3 +39,9 @@
   <!-- Collapsible content -->
 </mdb-navbar>
 <!--/.Navbar-->
+
+<div class="container">
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
