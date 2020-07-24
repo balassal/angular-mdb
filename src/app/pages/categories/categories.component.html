@@ -1,39 +1,79 @@
 <div class="jumbotron jumbotron-fluid">
   <h1 class="display-6 text-center mb-3">Categories</h1>
-  <div class="container mt-4">
-    <div class="row border rounded-lg mt-1" id="list-item">
-      <div class="col my-auto">
-        <p>Javascript</p>
-      </div>
-      <div class="col text-right">
-        <button
-          mdbBtn
-          type="button"
-          color="primary"
-          size="sm"
-          rounded="true"
-          mdbWavesEffect
-        >
-          Edit
-        </button>
-        <button
-          mdbBtn
-          type="button"
-          color="danger"
-          size="sm"
-          rounded="true"
-          mdbWavesEffect
-        >
-          Delete
-        </button>
-      </div>
+  <div class="container">
+    <div
+      *ngIf="!categories"
+      class="alert alert-danger text-center"
+      role="alert"
+    >
+      Server Response Error
     </div>
   </div>
-</div>
-<div class="row fixed-bottom mb-3">
-  <div class="col text-center">
-    <button mdbBtn type="button" color="indigo" rounded="true" mdbWavesEffect>
-      <mdb-icon fas icon="plus" size="2x"></mdb-icon>
-    </button>
+  <div *ngIf="categories">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div *ngIf="!willUpdate" class="md-form mt-5">
+            <input
+              mdbInput
+              type="text"
+              class="form-control"
+              id="cat_title"
+              [value]="categoryTitle"
+              (input)="categoryTitle = $event.target.value"
+              (keyup.enter)="createCategory()"
+            />
+            <label for="cat_title">Add Category</label>
+          </div>
+          <div *ngIf="willUpdate" class="md-form mt-5">
+            <input
+              mdbInput
+              type="text"
+              class="form-control"
+              id="cat_title"
+              [value]="categoryTitle"
+              (input)="categoryTitle = $event.target.value"
+              (keyup.enter)="updateCategory()"
+            />
+            <label for="cat_title">Update Category</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div
+        class="row border rounded-lg mt-1"
+        id="list-item"
+        *ngFor="let category of categories"
+      >
+        <div class="col my-auto">
+          <p>{{ category.title }}</p>
+        </div>
+        <div class="col text-right">
+          <button
+            mdbBtn
+            type="button"
+            color="primary"
+            size="sm"
+            rounded="true"
+            mdbWavesEffect
+            (click)="onEdit(category.id); categoryTitle = category.title"
+          >
+            Edit
+          </button>
+          <button
+            mdbBtn
+            type="button"
+            color="danger"
+            size="sm"
+            rounded="true"
+            mdbWavesEffect
+            (click)="onDelete(category.id)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
