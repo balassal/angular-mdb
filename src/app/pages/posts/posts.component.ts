@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 
 import { Post } from '../../models/post.model';
 import { PostService } from '../../services/post.service';
-import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './posts.component.html',
@@ -12,7 +11,7 @@ import { Router } from '@angular/router';
 export class PostsComponent implements OnInit {
   posts: Observable<Post[]>;
 
-  constructor(private postService: PostService, private router: Router) {}
+  constructor(private postService: PostService) {}
 
   ngOnInit() {
     this.loadData();
@@ -25,9 +24,5 @@ export class PostsComponent implements OnInit {
       },
       (error) => console.log(error)
     );
-  }
-
-  showDetails(id: number) {
-    this.router.navigate(['details', id]);
   }
 }

@@ -8,8 +8,8 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./post-details.component.scss'],
 })
 export class PostDetailsComponent implements OnInit {
-  private id: number;
-  private post: Post;
+  id: number;
+  post: Post;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,7 +22,6 @@ export class PostDetailsComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.postService.getPostById(this.id).subscribe(
       (data) => {
-        console.log(data);
         this.post = data;
       },
       (error) => console.log(error)
