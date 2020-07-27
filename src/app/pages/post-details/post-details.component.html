@@ -1,0 +1,54 @@
+<h1 class="display-6 text-center mb-3" id="page-title">Post Details</h1>
+<div class="jumbotron jumbotron-fluid">
+  <button
+    type="button"
+    mdbBtn
+    color="primary"
+    mdbWavesEffect
+    (click)="backToList()"
+  >
+    Back to list
+  </button>
+  <div class="container">
+    <table mdbTable borderless="true" responsive="true">
+      <tbody>
+        <tr mdbTableCol>
+          <th>ID:</th>
+          <td>{{ post.id }}</td>
+        </tr>
+        <tr mdbTableCol>
+          <th>Title:</th>
+          <td>{{ post.title }}</td>
+        </tr>
+        <tr mdbTableCol>
+          <th>Author:</th>
+          <td>{{ post.author }}</td>
+        </tr>
+        <tr mdbTableCol>
+          <th>Status:</th>
+          <td>{{ post.status }}</td>
+        </tr>
+        <tr mdbTableCol>
+          <th>Tags:</th>
+          <td>{{ post.tags }}</td>
+        </tr>
+        <tr mdbTableCol>
+          <th>Content:</th>
+          <td>{{ post.content }}</td>
+        </tr>
+        <tr mdbTableCol>
+          <th>Created On:</th>
+          <td>{{ post.createdAt | date: "yyyy.MM.dd HH:mm" }}</td>
+        </tr>
+        <tr mdbTableCol>
+          <th>Updated On:</th>
+          <td>{{ post.updatedAt | date: "yyyy.MM.dd HH:mm" }}</td>
+        </tr>
+        <tr mdbTableCol>
+          <th>Category:</th>
+          <td>{{ post.category.title }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

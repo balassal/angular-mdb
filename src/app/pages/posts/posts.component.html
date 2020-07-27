@@ -4,6 +4,9 @@
     Server Response Error
   </div>
 </div>
+<div class="container">
+  <button mdbBtn type="button" color="indigo" mdbWavesEffect>Add Post</button>
+</div>
 <div *ngIf="posts">
   <div class="container">
     <div class="row">
@@ -29,6 +32,16 @@
             </p>
           </mdb-card-body>
           <mdb-card-footer class="text-right">
+            <button
+              type="button"
+              mdbBtn
+              color="secondary"
+              size="sm"
+              mdbWavesEffect
+              (click)="showDetails(post.id)"
+            >
+              Details
+            </button>
             <button
               type="button"
               mdbBtn
