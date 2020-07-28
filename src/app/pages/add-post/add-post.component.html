@@ -1,0 +1,65 @@
+<h1 class="display-6 text-center mb-3" id="page-title">Create Post</h1>
+
+<div class="container">
+  <form (ngSubmit)="onSubmit()" [formGroup]="validatingForm">
+    <div class="md-form">
+      <input
+        mdbInput
+        type="text"
+        id="title"
+        class="form-control"
+        [(ngModel)]="post.title"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <label for="title" class="">Title</label>
+    </div>
+    <label for="category" style="color: #757575;">Category</label>
+    <select
+      class="browser-default custom-select"
+      id="category"
+      [(ngModel)]="category"
+      [ngModelOptions]="{ standalone: true }"
+    >
+      <option *ngFor="let category of categories" [ngValue]="category">{{
+        category.title
+      }}</option>
+    </select>
+    <div class="md-form">
+      <input
+        mdbInput
+        type="text"
+        id="author"
+        class="form-control"
+        [(ngModel)]="post.author"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <label for="author" class="">Author</label>
+    </div>
+    <div class="md-form">
+      <input
+        mdbInput
+        type="text"
+        id="tags"
+        class="form-control"
+        [(ngModel)]="post.tags"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <label for="tags" class="">Tags</label>
+    </div>
+    <div class="md-form">
+      <textarea
+        class="md-textarea form-control"
+        rows="3"
+        id="content"
+        type="text"
+        length="120"
+        mdbCharCounter
+        mdbInput
+        [(ngModel)]="post.content"
+        [ngModelOptions]="{ standalone: true }"
+      ></textarea>
+      <label for="content">Content</label>
+    </div>
+    <button type="submit" mdbBtn color="primary" mdbWavesEffect>Add</button>
+  </form>
+</div>
