@@ -14,13 +14,13 @@ import postValidation from '../../validation/validation';
 export class AddPostComponent implements OnInit {
   post: Post = new Post();
   categories: Observable<Category[]>;
-  category: Category = new Category();
   error = {
     title: '',
     category: '',
     author: '',
     content: '',
   };
+  message: string = '';
 
   constructor(
     private postService: PostService,
@@ -42,6 +42,26 @@ export class AddPostComponent implements OnInit {
 
     this.error = postValidation(this.post);
 
-    console.log(this.error);
+    if (this.errorIsEmpty()) {
+      this.postService.createPost(this.post).subscribe(
+        (data) => {
+          setInterval(() => {
+            this.message = 'Post added successfully!';
+          }, 3000);
+          this.message = '';
+        },
+        (error) => console.log(error)
+      );
+      this.post = new Post();
+    }
   }
+
+  errorIsEmpty = () => {
+    return (
+      this.error.title == '' ||
+      this.error.author == '' ||
+      this.error.category == null ||
+      this.error.content == ''
+    );
+  };
 }

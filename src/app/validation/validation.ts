@@ -11,7 +11,7 @@ const postValidation = (post: Post) => {
   if (post.title == '' || post.title == null) {
     error.title = 'Title is required!';
   }
-  if (post.category == null || post.category?.title == '') {
+  if (post.category == null) {
     error.category = 'Category is required!';
   }
   if (post.author == '' || post.author == null) {

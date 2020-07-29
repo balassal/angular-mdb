@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class PostsComponent implements OnInit {
   posts: Observable<Post[]>;
 
+  loading: boolean;
+
   constructor(private postService: PostService, private router: Router) {}
 
   ngOnInit() {
@@ -19,12 +21,14 @@ export class PostsComponent implements OnInit {
   }
 
   loadData() {
+    this.loading = true;
     this.postService.getAllPost().subscribe(
       (data) => {
         this.posts = data;
       },
       (error) => console.log(error)
     );
+    this.loading = false;
   }
 
   onAddPost() {

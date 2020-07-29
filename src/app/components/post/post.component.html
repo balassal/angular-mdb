@@ -1,7 +1,7 @@
 <mdb-card class="mt-3">
   <mdb-card-body>
     <mdb-card-title>
-      <h4>{{ post.title }}</h4>
+      <h3>{{ post.title }}</h3>
       <p id="date">on {{ post.createdAt | date: "yyyy.MM.dd HH:mm" }}</p>
       <p>by {{ post.author }}</p>
     </mdb-card-title>
@@ -9,9 +9,12 @@
     <mdb-card-text>
       {{ post.content }}
     </mdb-card-text>
-    <p>
+    <mdb-badge *ngFor="let tag of tags" pill="true" color="amber darken-2">{{
+      tag
+    }}</mdb-badge>
+    <!-- <p>
       <small>{{ post.tags }}</small>
-    </p>
+    </p> -->
   </mdb-card-body>
   <mdb-card-footer class="text-right">
     <button
