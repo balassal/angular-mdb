@@ -12,6 +12,7 @@ import { PostsComponent } from './pages/posts/posts.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { PostComponent } from './components/post/post.component';
 import { AddPostComponent } from './pages/add-post/add-post.component';
+import { MessageComponent } from './components/message/message.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AddPostComponent } from './pages/add-post/add-post.component';
     PostDetailsComponent,
     PostComponent,
     AddPostComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
