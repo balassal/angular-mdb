@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class PostsComponent implements OnInit {
   posts: Observable<Post[]>;
 
-  loading: boolean;
+  loading: boolean = false;
 
   constructor(private postService: PostService, private router: Router) {}
 

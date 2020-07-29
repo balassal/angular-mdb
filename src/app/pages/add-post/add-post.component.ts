@@ -45,14 +45,11 @@ export class AddPostComponent implements OnInit {
     if (this.errorIsEmpty()) {
       this.postService.createPost(this.post).subscribe(
         (data) => {
-          setInterval(() => {
-            this.message = 'Post added successfully!';
-          }, 3000);
-          this.message = '';
+          console.log(data);
         },
         (error) => console.log(error)
       );
-      this.post = new Post();
+      this.router.navigate(['posts']);
     }
   }
 
