@@ -14,6 +14,10 @@ export class PostService {
     return this.http.get(`${this.baseUrl}`);
   }
 
+  getAllPostSorted(orderby: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/sorted?orderBy=${orderby}`);
+  }
+
   getPostById(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
   }

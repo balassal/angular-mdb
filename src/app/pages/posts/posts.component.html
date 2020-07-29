@@ -6,15 +6,33 @@
   </div>
 </div>
 <div class="container">
-  <button
-    mdbBtn
-    type="button"
-    color="indigo"
-    mdbWavesEffect
-    (click)="onAddPost()"
-  >
-    Add Post
-  </button>
+  <div class="row justify-content-between">
+    <div class="col">
+      <button
+        mdbBtn
+        type="button"
+        color="indigo"
+        mdbWavesEffect
+        (click)="onAddPost()"
+      >
+        Add Post
+      </button>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-4">
+      <label for="list-order" style="color: #757575;">Order by:</label>
+      <select
+        class="browser-default custom-select"
+        id="list-order"
+        name="list-order"
+        (change)="sortPost($event.target.value)"
+      >
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
+        <option value="a-z">A-Z</option>
+        <option value="z-a">Z-A</option>
+      </select>
+    </div>
+  </div>
 </div>
 <div *ngIf="posts">
   <div class="container mb-3">

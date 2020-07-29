@@ -12,26 +12,26 @@ import { Router } from '@angular/router';
 export class PostsComponent implements OnInit {
   posts: Observable<Post[]>;
 
-  loading: boolean = false;
-
   constructor(private postService: PostService, private router: Router) {}
 
   ngOnInit() {
-    this.loadData();
+    this.loadData('newest');
   }
 
-  loadData() {
-    this.loading = true;
-    this.postService.getAllPost().subscribe(
+  loadData(orderby: string) {
+    this.postService.getAllPostSorted(orderby).subscribe(
       (data) => {
         this.posts = data;
       },
       (error) => console.log(error)
     );
-    this.loading = false;
   }
 
   onAddPost() {
     this.router.navigate(['posts/add']);
+  }
+
+  sortPost(e) {
+    this.loadData(e);
   }
 }
