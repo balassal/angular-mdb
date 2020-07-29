@@ -24,6 +24,11 @@
               (keyup.enter)="createCategory()"
             />
             <label for="cat_title">Add Category</label>
+            <div *ngIf="error" class="alert alert-danger">
+              <div>
+                {{ error }}
+              </div>
+            </div>
           </div>
           <div *ngIf="willUpdate" class="md-form mt-5">
             <input
@@ -36,6 +41,11 @@
               (keyup.enter)="updateCategory()"
             />
             <label for="cat_title">Update Category</label>
+            <div *ngIf="error" class="alert alert-danger">
+              <div>
+                {{ error }}
+              </div>
+            </div>
           </div>
         </div>
       </div>

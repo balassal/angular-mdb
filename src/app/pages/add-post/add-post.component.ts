@@ -43,6 +43,7 @@ export class AddPostComponent implements OnInit {
     this.error = postValidation(this.post);
 
     if (this.errorIsEmpty()) {
+      this.post.status = 'published';
       this.postService.createPost(this.post).subscribe(
         (data) => {
           console.log(data);

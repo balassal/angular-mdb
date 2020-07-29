@@ -12,6 +12,7 @@ export class CategoriesComponent implements OnInit {
   categoryTitle: string = '';
   categoryId: number;
   willUpdate = false;
+  error: string = '';
 
   constructor(private categoryService: CategoryService) {}
 
@@ -31,28 +32,36 @@ export class CategoriesComponent implements OnInit {
   }
 
   createCategory() {
-    let category = new Category();
-    category.title = this.categoryTitle;
-    this.categoryService.createCategory(category).subscribe(
-      (data) => console.log(data),
-      (error) => console.log(error)
-    );
-    this.categoryTitle = '';
-    this.loadData();
+    if (this.categoryTitle == '') {
+      this.error = 'Category title is required!';
+    } else {
+      let category = new Category();
+      category.title = this.categoryTitle;
+      this.categoryService.createCategory(category).subscribe(
+        (data) => console.log(data),
+        (error) => console.log(error)
+      );
+      this.categoryTitle = '';
+      this.loadData();
+    }
   }
 
   updateCategory() {
-    let category = new Category();
-    category.id = this.categoryId;
-    category.title = this.categoryTitle;
-    this.categoryService.updateCategory(this.categoryId, category).subscribe(
-      (data) => console.log(data),
-      (error) => console.log(error)
-    );
-    this.categoryTitle = '';
-    this.categoryId = null;
-    this.willUpdate = false;
-    this.loadData();
+    if (this.categoryTitle == '') {
+      this.error = 'Category title is required!';
+    } else {
+      let category = new Category();
+      category.id = this.categoryId;
+      category.title = this.categoryTitle;
+      this.categoryService.updateCategory(this.categoryId, category).subscribe(
+        (data) => console.log(data),
+        (error) => console.log(error)
+      );
+      this.categoryTitle = '';
+      this.categoryId = null;
+      this.willUpdate = false;
+      this.loadData();
+    }
   }
 
   onDelete(id: number) {
