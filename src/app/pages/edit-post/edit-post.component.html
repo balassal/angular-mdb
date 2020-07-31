@@ -1,1 +1,124 @@
-<p>edit-post works!</p>
+<h1 class="display-6 text-center mb-3" id="page-title">Update Post</h1>
+
+<div class="jumbotron">
+  <button
+    type="button"
+    mdbBtn
+    color="primary"
+    mdbWavesEffect
+    (click)="backToList()"
+  >
+    Back to list
+  </button>
+
+  <div class="container">
+    <form (ngSubmit)="onSubmit($event)">
+      <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-8 col-lg-8">
+          <!-- Title input -->
+          <div class="md-form">
+            <input
+              mdbInput
+              type="text"
+              id="title"
+              name="title"
+              class="form-control"
+              [(ngModel)]="post.title"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <div *ngIf="error.title" class="alert alert-danger">
+              <div>
+                {{ error.title }}
+              </div>
+            </div>
+            <label for="title" class="">Title</label>
+          </div>
+
+          <!-- Category select -->
+          <label for="category" style="color: #757575;">Category</label>
+          <select
+            class="browser-default custom-select"
+            id="category"
+            name="category"
+            [(ngModel)]="post.category"
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <option *ngFor="let category of categories" [ngValue]="category">
+              {{ category.title }}
+            </option>
+          </select>
+          <div *ngIf="error.category" class="alert alert-danger">
+            <div>
+              {{ error.category }}
+            </div>
+          </div>
+
+          <!-- Author input -->
+          <div class="md-form">
+            <input
+              mdbInput
+              type="text"
+              id="author"
+              class="form-control"
+              #author="ngModel"
+              [(ngModel)]="post.author"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <label for="author" class="">Author</label>
+            <div *ngIf="error.author" class="alert alert-danger">
+              {{ error.author }}
+            </div>
+          </div>
+
+          <!-- Tags input -->
+          <div class="md-form">
+            <input
+              mdbInput
+              type="text"
+              id="tags"
+              class="form-control"
+              [(ngModel)]="post.tags"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <label for="tags" class="">Tags</label>
+          </div>
+          <!-- Content input -->
+          <div class="md-form">
+            <textarea
+              #content="ngModel"
+              class="md-textarea form-control"
+              rows="3"
+              id="content"
+              type="text"
+              length="120"
+              mdbCharCounter
+              mdbInput
+              [(ngModel)]="post.content"
+              [ngModelOptions]="{ standalone: true }"
+            ></textarea>
+            <label for="content">Content</label>
+            <div *ngIf="error.content" class="alert alert-danger">
+              {{ error.content }}
+            </div>
+          </div>
+          <!-- Checkbox -->
+          <div class="custom-control custom-checkbox">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              id="status"
+              [checked]="post.status == 'published' ? true : false"
+              [(ngModel)]="isPublic"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <label class="custom-control-label" for="status">Public</label>
+          </div>
+          <!-- Submit button -->
+          <button type="submit" mdbBtn color="primary" mdbWavesEffect>
+            Update
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
