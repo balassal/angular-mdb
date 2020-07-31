@@ -5,6 +5,7 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { AddPostComponent } from './pages/add-post/add-post.component';
+import { EditPostComponent } from './pages/edit-post/edit-post.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'posts', component: PostsComponent },
   { path: 'posts/details/:id', component: PostDetailsComponent },
   { path: 'posts/add', component: AddPostComponent },
+  { path: 'posts/edit/:id', component: EditPostComponent },
 ];
 
 @NgModule({

@@ -62,4 +62,8 @@ export class AddPostComponent implements OnInit {
       this.error.content == ''
     );
   };
+
+  backToList() {
+    this.router.navigate(['posts']);
+  }
 }

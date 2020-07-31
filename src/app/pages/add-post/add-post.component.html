@@ -1,108 +1,112 @@
 <h1 class="display-6 text-center mb-3" id="page-title">Create Post</h1>
 
-<div class="container">
-  <form (ngSubmit)="onSubmit($event)">
-    <div class="row justify-content-center">
-      <div class="col-sm-12 col-md-8 col-lg-8">
-        <!-- Title input -->
-        <div class="md-form">
-          <input
-            mdbInput
-            type="text"
-            id="title"
-            name="title"
-            class="form-control"
-            [(ngModel)]="post.title"
+<div class="jumbotron">
+  <button
+    type="button"
+    mdbBtn
+    color="primary"
+    mdbWavesEffect
+    (click)="backToList()"
+  >
+    Back to list
+  </button>
+
+  <div class="container">
+    <form (ngSubmit)="onSubmit($event)">
+      <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-8 col-lg-8">
+          <!-- Title input -->
+          <div class="md-form">
+            <input
+              mdbInput
+              type="text"
+              id="title"
+              name="title"
+              class="form-control"
+              [(ngModel)]="post.title"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <div *ngIf="error.title" class="alert alert-danger">
+              <div>
+                {{ error.title }}
+              </div>
+            </div>
+            <label for="title" class="">Title</label>
+          </div>
+
+          <!-- Category select -->
+          <label for="category" style="color: #757575;">Category</label>
+          <select
+            class="browser-default custom-select"
+            id="category"
+            name="category"
+            [(ngModel)]="post.category"
             [ngModelOptions]="{ standalone: true }"
-          />
-          <div *ngIf="error.title" class="alert alert-danger">
+          >
+            <option *ngFor="let category of categories" [ngValue]="category">{{
+              category.title
+            }}</option>
+          </select>
+          <div *ngIf="error.category" class="alert alert-danger">
             <div>
-              {{ error.title }}
+              {{ error.category }}
             </div>
           </div>
-          <label for="title" class="">Title</label>
-        </div>
 
-        <!-- Category select -->
-        <label for="category" style="color: #757575;">Category</label>
-        <select
-          class="browser-default custom-select"
-          id="category"
-          name="category"
-          [(ngModel)]="post.category"
-          [ngModelOptions]="{ standalone: true }"
-        >
-          <option *ngFor="let category of categories" [ngValue]="category">{{
-            category.title
-          }}</option>
-        </select>
-        <div *ngIf="error.category" class="alert alert-danger">
-          <div>
-            {{ error.category }}
+          <!-- Author input -->
+          <div class="md-form">
+            <input
+              mdbInput
+              type="text"
+              id="author"
+              class="form-control"
+              #author="ngModel"
+              [(ngModel)]="post.author"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <label for="author" class="">Author</label>
+            <div *ngIf="error.author" class="alert alert-danger">
+              {{ error.author }}
+            </div>
           </div>
-        </div>
 
-        <!-- Author input -->
-        <div class="md-form">
-          <input
-            mdbInput
-            type="text"
-            id="author"
-            class="form-control"
-            #author="ngModel"
-            [(ngModel)]="post.author"
-            [ngModelOptions]="{ standalone: true }"
-          />
-          <label for="author" class="">Author</label>
-          <div *ngIf="error.author" class="alert alert-danger">
-            {{ error.author }}
+          <!-- Tags input -->
+          <div class="md-form">
+            <input
+              mdbInput
+              type="text"
+              id="tags"
+              class="form-control"
+              [(ngModel)]="post.tags"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <label for="tags" class="">Tags</label>
           </div>
-        </div>
-
-        <!-- Tags input -->
-        <div class="md-form">
-          <input
-            mdbInput
-            type="text"
-            id="tags"
-            class="form-control"
-            [(ngModel)]="post.tags"
-            [ngModelOptions]="{ standalone: true }"
-          />
-          <label for="tags" class="">Tags</label>
+          <!-- Content input -->
+          <div class="md-form">
+            <textarea
+              #content="ngModel"
+              class="md-textarea form-control"
+              rows="3"
+              id="content"
+              type="text"
+              length="120"
+              mdbCharCounter
+              mdbInput
+              [(ngModel)]="post.content"
+              [ngModelOptions]="{ standalone: true }"
+            ></textarea>
+            <label for="content">Content</label>
+            <div *ngIf="error.content" class="alert alert-danger">
+              {{ error.content }}
+            </div>
+          </div>
+          <!-- Submit button -->
+          <button type="submit" mdbBtn color="primary" mdbWavesEffect>
+            Add
+          </button>
         </div>
       </div>
-    </div>
-
-    <div class="row justify-content-center">
-      <div class="col-sm-12 col-md-10 col-lg-10">
-        <!-- Content input -->
-        <div class="md-form">
-          <textarea
-            #content="ngModel"
-            class="md-textarea form-control"
-            rows="3"
-            id="content"
-            type="text"
-            length="120"
-            mdbCharCounter
-            mdbInput
-            [(ngModel)]="post.content"
-            [ngModelOptions]="{ standalone: true }"
-          ></textarea>
-          <label for="content">Content</label>
-          <div *ngIf="error.content" class="alert alert-danger">
-            {{ error.content }}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row justify-content-center">
-      <div class="col-sm-12 col-md-8 col-lg-8">
-        <!-- Submit button -->
-        <button type="submit" mdbBtn color="primary" mdbWavesEffect>Add</button>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

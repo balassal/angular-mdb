@@ -13,6 +13,7 @@ import { PostDetailsComponent } from './pages/post-details/post-details.componen
 import { PostComponent } from './components/post/post.component';
 import { AddPostComponent } from './pages/add-post/add-post.component';
 import { MessageComponent } from './components/message/message.component';
+import { EditPostComponent } from './pages/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MessageComponent } from './components/message/message.component';
     PostComponent,
     AddPostComponent,
     MessageComponent,
+    EditPostComponent,
   ],
   imports: [
     BrowserModule,

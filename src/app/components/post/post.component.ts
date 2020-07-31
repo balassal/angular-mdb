@@ -21,4 +21,8 @@ export class PostComponent implements OnInit {
   showDetails(id: number) {
     this.router.navigate(['posts/details', id]);
   }
+
+  showEditPostPage(id: number) {
+    this.router.navigate(['posts/edit', id]);
+  }
 }
