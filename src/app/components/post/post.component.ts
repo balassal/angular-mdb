@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from 'src/app/models/post.model';
 import { Router } from '@angular/router';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-post',
@@ -12,7 +13,7 @@ export class PostComponent implements OnInit {
 
   tags: string[];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private postService: PostService) {}
 
   ngOnInit(): void {
     this.tags = this.post.tags.trim().split(',');
@@ -20,9 +21,5 @@ export class PostComponent implements OnInit {
 
   showDetails(id: number) {
     this.router.navigate(['posts/details', id]);
-  }
-
-  showEditPostPage(id: number) {
-    this.router.navigate(['posts/edit', id]);
   }
 }

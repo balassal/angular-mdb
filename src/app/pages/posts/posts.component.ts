@@ -1,21 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Post } from '../../models/post.model';
 import { PostService } from '../../services/post.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss'],
 })
-export class PostsComponent implements OnInit {
+export class PostsComponent implements OnInit, OnDestroy {
   posts: Observable<Post[]>;
 
-  constructor(private postService: PostService, private router: Router) {}
+  constructor(
+    private postService: PostService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.loadData('newest');
+    if (this.route.snapshot.queryParamMap.get('reload')) {
+      console.log('Reload');
+    } else {
+      this.loadData('newest');
+    }
+  }
+
+  ngOnDestroy() {
+    this.posts = null;
   }
 
   loadData(orderby: string) {
@@ -27,7 +39,7 @@ export class PostsComponent implements OnInit {
     );
   }
 
-  onAddPost() {
+  navigateToAddPost() {
     this.router.navigate(['posts/add']);
   }
 

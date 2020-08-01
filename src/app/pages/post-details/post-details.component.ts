@@ -31,4 +31,15 @@ export class PostDetailsComponent implements OnInit {
   backToList() {
     this.router.navigate(['posts']);
   }
+
+  editPost(id: number) {
+    this.router.navigate(['posts/edit', id]);
+  }
+
+  deletePost(id: number) {
+    this.postService.deletePost(id).subscribe(
+      (data) => this.router.navigate(['posts']),
+      (error) => console.log(error)
+    );
+  }
 }
