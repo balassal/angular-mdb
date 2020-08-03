@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { CategoryService } from '../../services/category.service';
 import { Category } from '../../models/category.model';
 
@@ -8,7 +7,7 @@ import { Category } from '../../models/category.model';
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent implements OnInit {
-  categories: Observable<Category[]>;
+  categories: Category[];
   categoryTitle: string = '';
   categoryId: number;
   willUpdate = false;
@@ -37,6 +36,7 @@ export class CategoriesComponent implements OnInit {
     } else {
       let category = new Category();
       category.title = this.categoryTitle;
+      this.categories = [...this.categories, category];
       this.categoryService.createCategory(category).subscribe(
         (data) => console.log(data),
         (error) => console.log(error)
@@ -53,6 +53,10 @@ export class CategoriesComponent implements OnInit {
       let category = new Category();
       category.id = this.categoryId;
       category.title = this.categoryTitle;
+
+      this.categories = this.categories.filter((cat) => cat.id !== category.id);
+      this.categories = [...this.categories, category];
+
       this.categoryService.updateCategory(this.categoryId, category).subscribe(
         (data) => console.log(data),
         (error) => console.log(error)
@@ -60,11 +64,11 @@ export class CategoriesComponent implements OnInit {
       this.categoryTitle = '';
       this.categoryId = null;
       this.willUpdate = false;
-      this.loadData();
     }
   }
 
   onDelete(id: number) {
+    this.categories = this.categories.filter((category) => category.id !== id);
     this.categoryService.deleteCategory(id).subscribe(
       (data) => {
         console.log(data);
