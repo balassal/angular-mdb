@@ -7,7 +7,7 @@
     </mdb-card-title>
 
     <mdb-card-text>
-      {{ post.content }}
+      {{ post.content.substring(0, 150) + "..." }}
     </mdb-card-text>
     <mdb-badge *ngFor="let tag of tags" pill="true" color="amber darken-2">{{
       tag
