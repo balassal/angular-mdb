@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +34,7 @@ import { EditPostComponent } from './pages/edit-post/edit-post.component';
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     FormsModule,
+    CKEditorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

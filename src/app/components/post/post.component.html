@@ -27,5 +27,25 @@
     >
       Details
     </button>
+    <button
+      type="button"
+      mdbBtn
+      color="warning"
+      size="sm"
+      mdbWavesEffect
+      (click)="onEdit(post.id)"
+    >
+      Edit
+    </button>
+    <button
+      type="button"
+      mdbBtn
+      color="danger"
+      size="sm"
+      mdbWavesEffect
+      (click)="onDelete(post.id)"
+    >
+      Delete
+    </button>
   </mdb-card-footer>
 </mdb-card>

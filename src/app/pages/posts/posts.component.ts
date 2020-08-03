@@ -46,4 +46,14 @@ export class PostsComponent implements OnInit, OnDestroy {
   sortPost(e) {
     this.loadData(e);
   }
+
+  deletePost(id: number) {
+    this.postService.deletePost(id).subscribe(
+      (data) => {
+        console.log(data);
+        this.loadData('newest');
+      },
+      (error) => console.log(error)
+    );
+  }
 }

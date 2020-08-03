@@ -12,7 +12,7 @@ import postValidation from '../../validation/validation';
   styleUrls: ['./add-post.component.scss'],
 })
 export class AddPostComponent implements OnInit {
-  post: Post = new Post();
+  post: Post;
   categories: Observable<Category[]>;
   error = {
     title: '',
@@ -29,6 +29,8 @@ export class AddPostComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.post = new Post();
+    this.post.content = '';
     this.categoryService.getAllCategory().subscribe(
       (data) => {
         this.categories = data;
@@ -37,9 +39,7 @@ export class AddPostComponent implements OnInit {
     );
   }
 
-  onSubmit(e) {
-    e.preventDefault();
-
+  onSubmit() {
     this.error = postValidation(this.post);
 
     if (this.errorIsEmpty()) {
