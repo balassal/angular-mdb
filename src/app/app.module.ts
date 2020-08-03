@@ -15,6 +15,7 @@ import { PostComponent } from './components/post/post.component';
 import { AddPostComponent } from './pages/add-post/add-post.component';
 import { MessageComponent } from './components/message/message.component';
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { EditPostComponent } from './pages/edit-post/edit-post.component';
     AddPostComponent,
     MessageComponent,
     EditPostComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
