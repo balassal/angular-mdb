@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./posts.component.scss'],
 })
 export class PostsComponent implements OnInit, OnDestroy {
-  posts: Observable<Post[]>;
+  posts: Post[];
 
   constructor(
     private postService: PostService,
@@ -48,6 +48,8 @@ export class PostsComponent implements OnInit, OnDestroy {
   }
 
   deletePost(id: number) {
+    this.posts = this.posts.filter((post) => post.id !== id);
+
     this.postService.deletePost(id).subscribe(
       (data) => {
         console.log(data);

@@ -37,9 +37,11 @@ export class PostDetailsComponent implements OnInit {
   }
 
   deletePost(id: number) {
-    this.postService.deletePost(id).subscribe(
-      (data) => this.router.navigate(['posts']),
-      (error) => console.log(error)
-    );
+    if (confirm('Are you sure to delete this post?')) {
+      this.postService.deletePost(id).subscribe(
+        (data) => this.router.navigate(['posts']),
+        (error) => console.log(error)
+      );
+    }
   }
 }

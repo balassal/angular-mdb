@@ -28,6 +28,10 @@ export class PostComponent implements OnInit {
   }
 
   onDelete(id: number) {
-    this.deletePost.emit(id);
+    if (
+      confirm('Are you sure to delete post with title ' + this.post.title + '?')
+    ) {
+      this.deletePost.emit(id);
+    }
   }
 }
