@@ -28,7 +28,7 @@ export class AddUserComponent implements OnInit {
   }
 
   onSubmit() {
-    this.error = this.userValidation(this.user, this.confirmPassword);
+    this.error = this.validateUser(this.user, this.confirmPassword);
 
     if (this.errorIsEmpty()) {
       this.userService.createUser(this.user).subscribe(
@@ -41,39 +41,39 @@ export class AddUserComponent implements OnInit {
 
   errorIsEmpty = () => {
     return (
-      this.error.username == '' ||
-      this.error.email == '' ||
-      this.error.password == '' ||
-      this.error.confirmPassword == ''
+      !this.error.username &&
+      !this.error.email &&
+      !this.error.password &&
+      !this.error.confirmPassword
     );
   };
 
-  userValidation = (user: User, confirmPass: string) => {
-    let error = {
+  validateUser(user: User, pass: string) {
+    const err = {
       username: '',
+      email: '',
       password: '',
       confirmPassword: '',
-      email: '',
     };
 
-    if (user.username == '' || user.username == null) {
-      error.username = 'Username is required!';
+    if (!user.username) {
+      err.username = 'Username is required!';
     }
-    if (user.email == '' || user.email == null) {
-      error.email = 'Email is required!';
+    if (!user.email) {
+      err.email = 'Email is required!';
     }
     if (!this.validateEmail(user.email)) {
-      error.email = 'Email is not valid!';
+      err.email = 'Email is not valid!';
     }
-    if (user.password == '' || user.password == null) {
-      error.password = 'Password is required!';
+    if (!user.password) {
+      err.password = 'Password is required!';
     }
-    if (user.password != confirmPass) {
-      error.confirmPassword = 'Confirm Password does not match!';
+    if (user.password != pass) {
+      err.confirmPassword = 'Confirm Password does not match!';
     }
 
-    return error;
-  };
+    return err;
+  }
 
   validateEmail = (email: string) => {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

@@ -5,7 +5,6 @@ import { PostService } from 'src/app/services/post.service';
 import { Category } from 'src/app/models/category.model';
 import { Observable } from 'rxjs';
 import { CategoryService } from 'src/app/services/category.service';
-import postValidation from '../../validation';
 
 @Component({
   templateUrl: './edit-post.component.html',
@@ -51,7 +50,7 @@ export class EditPostComponent implements OnInit {
   onSubmit(e) {
     e.preventDefault();
 
-    this.error = postValidation(this.post);
+    this.error = this.postValidation(this.post);
 
     if (this.errorIsEmpty()) {
       this.post.status = this.isPublic ? 'published' : 'unpublished';
@@ -76,4 +75,28 @@ export class EditPostComponent implements OnInit {
   backToList() {
     this.router.navigate(['posts']);
   }
+
+  postValidation = (post: Post) => {
+    let error = {
+      title: '',
+      category: '',
+      author: '',
+      content: '',
+    };
+
+    if (post.title == '' || post.title == null) {
+      error.title = 'Title is required!';
+    }
+    if (post.category == null) {
+      error.category = 'Category is required!';
+    }
+    if (post.author == '' || post.author == null) {
+      error.author = 'Author is required!';
+    }
+    if (post.content == '' || post.content == null) {
+      error.content = 'Content is required!';
+    }
+
+    return error;
+  };
 }
