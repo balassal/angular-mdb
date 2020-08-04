@@ -1,6 +1,11 @@
 <h1 class="display-6 text-center mb-3">Users</h1>
 
 <div class="container">
+  <div *ngIf="!users" class="alert alert-danger text-center" role="alert">
+    Server Response Error
+  </div>
+</div>
+<div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-6 my-auto">
       <button

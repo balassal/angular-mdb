@@ -1,5 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 
 import { Post } from '../../models/post.model';
 import { PostService } from '../../services/post.service';
@@ -11,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PostsComponent implements OnInit, OnDestroy {
   posts: Post[];
+  searchText: string = '';
 
   constructor(
     private postService: PostService,
@@ -18,12 +18,12 @@ export class PostsComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) {}
 
+  @HostListener('input') oninput() {
+    this.searchItems();
+  }
+
   ngOnInit() {
-    if (this.route.snapshot.queryParamMap.get('reload')) {
-      console.log('Reload');
-    } else {
-      this.loadData('newest');
-    }
+    this.loadData('newest');
   }
 
   ngOnDestroy() {
@@ -57,5 +57,22 @@ export class PostsComponent implements OnInit, OnDestroy {
       },
       (error) => console.log(error)
     );
+  }
+
+  searchItems() {
+    if (!this.searchText) {
+      this.loadData('newest');
+    } else {
+      this.posts = this.posts.filter((post) => {
+        return (
+          post.title.includes(this.searchText) ||
+          post.id.toString().includes(this.searchText) ||
+          post.author.includes(this.searchText) ||
+          post.tags.includes(this.searchText) ||
+          post.content.includes(this.searchText) ||
+          post.category.title.includes(this.searchText)
+        );
+      });
+    }
   }
 }

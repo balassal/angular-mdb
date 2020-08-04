@@ -53,7 +53,6 @@ export class UserListComponent implements OnInit {
           user.email.includes(this.searchText)
         );
       });
-      console.log(this.users);
     }
   }
 }
