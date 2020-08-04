@@ -1,0 +1,51 @@
+<mdb-card class="mb-2">
+  <div class="row">
+    <div class="col my-auto">
+      <p class="h3" id="username">{{ user.username }}</p>
+    </div>
+    <div class="col my-auto text-right">
+      <button
+        mdbBtn
+        color="indigo"
+        class="waves-light"
+        type="button"
+        (click)="userDetails.toggle()"
+        mdbWavesEffect
+      >
+        Details
+      </button>
+    </div>
+  </div>
+
+  <div class="container" mdbCollapse #userDetails="bs-collapse">
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <p>ID: {{ user.id }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Roles: {{ user.roles }}</p>
+        <p>Created on: {{ user.createdAt | date: "yyyy.MM.dd HH:mm" }}</p>
+        <p>Updated on: {{ user.updatedAt | date: "yyyy.MM.dd HH:mm" }}</p>
+      </div>
+      <div class="col align-self-end text-right mb-2">
+        <button
+          type="button"
+          mdbBtn
+          color="amber"
+          mdbWavesEffect
+          (click)="onEdit(user.id)"
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          mdbBtn
+          color="danger"
+          mdbWavesEffect
+          (click)="onDelete(user.id)"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</mdb-card>
