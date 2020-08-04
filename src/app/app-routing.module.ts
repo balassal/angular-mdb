@@ -7,6 +7,8 @@ import { PostDetailsComponent } from './pages/post-details/post-details.componen
 import { AddPostComponent } from './pages/add-post/add-post.component';
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
+import { EditUserComponent } from './pages/edit-user/edit-user.component';
+import { AddUserComponent } from './pages/add-user/add-user.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'posts/add', component: AddPostComponent },
   { path: 'posts/edit/:id', component: EditPostComponent },
   { path: 'users', component: UserListComponent },
+  { path: 'users/edit/:id', component: EditUserComponent },
+  { path: 'users/add', component: AddUserComponent },
 ];
 
 @NgModule({
