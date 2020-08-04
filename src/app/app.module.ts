@@ -17,7 +17,6 @@ import { PostsComponent } from './pages/posts/posts.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { PostComponent } from './components/post/post.component';
 import { AddPostComponent } from './pages/add-post/add-post.component';
-import { MessageComponent } from './components/message/message.component';
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { UserComponent } from './components/user/user.component';
@@ -33,7 +32,6 @@ import { AddUserComponent } from './pages/add-user/add-user.component';
     PostDetailsComponent,
     PostComponent,
     AddPostComponent,
-    MessageComponent,
     EditPostComponent,
     UserListComponent,
     UserComponent,
