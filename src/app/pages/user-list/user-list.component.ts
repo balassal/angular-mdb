@@ -39,7 +39,7 @@ export class UserListComponent implements OnInit {
   }
 
   onAddUser() {
-    this.router.navigate(['posts/add']);
+    this.router.navigate(['users/add']);
   }
 
   searchItems() {

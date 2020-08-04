@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/models/category.model';
-import postValidation from '../../validation/validation';
 
 @Component({
   templateUrl: './add-post.component.html',
@@ -40,7 +39,7 @@ export class AddPostComponent implements OnInit {
   }
 
   onSubmit() {
-    this.error = postValidation(this.post);
+    this.error = this.postValidation(this.post);
 
     if (this.errorIsEmpty()) {
       this.post.status = 'published';
@@ -66,4 +65,28 @@ export class AddPostComponent implements OnInit {
   backToList() {
     this.router.navigate(['posts']);
   }
+
+  postValidation = (post: Post) => {
+    let error = {
+      title: '',
+      category: '',
+      author: '',
+      content: '',
+    };
+
+    if (post.title == '' || post.title == null) {
+      error.title = 'Title is required!';
+    }
+    if (post.category == null) {
+      error.category = 'Category is required!';
+    }
+    if (post.author == '' || post.author == null) {
+      error.author = 'Author is required!';
+    }
+    if (post.content == '' || post.content == null) {
+      error.content = 'Content is required!';
+    }
+
+    return error;
+  };
 }

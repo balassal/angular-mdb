@@ -5,7 +5,7 @@ import { PostService } from 'src/app/services/post.service';
 import { Category } from 'src/app/models/category.model';
 import { Observable } from 'rxjs';
 import { CategoryService } from 'src/app/services/category.service';
-import postValidation from '../../validation/validation';
+import postValidation from '../../validation';
 
 @Component({
   templateUrl: './edit-post.component.html',

@@ -1,0 +1,102 @@
+<h1 class="display-6 text-center mb-3" id="page-title">Create User</h1>
+
+<div class="jumbotron">
+  <button
+    type="button"
+    mdbBtn
+    color="primary"
+    mdbWavesEffect
+    (click)="backToList()"
+  >
+    Back to list
+  </button>
+
+  <div class="container">
+    <form (ngSubmit)="onSubmit()">
+      <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-8 col-lg-8">
+          <!-- Username input -->
+          <div class="md-form">
+            <input
+              mdbInput
+              type="text"
+              id="username"
+              name="username"
+              class="form-control"
+              [(ngModel)]="user.username"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <div *ngIf="error.username" class="alert alert-danger">
+              <div>
+                {{ error.username }}
+              </div>
+            </div>
+            <label for="username" class="">Username</label>
+          </div>
+
+          <!-- Email input -->
+          <div class="md-form">
+            <input
+              mdbInput
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              [(ngModel)]="user.email"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <div *ngIf="error.email" class="alert alert-danger">
+              <div>
+                {{ error.email }}
+              </div>
+            </div>
+            <label for="email" class="">Email</label>
+          </div>
+
+          <!-- Password input -->
+          <div class="md-form">
+            <input
+              mdbInput
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              [(ngModel)]="user.password"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <div *ngIf="error.password" class="alert alert-danger">
+              <div>
+                {{ error.password }}
+              </div>
+            </div>
+            <label for="password" class="">Password</label>
+          </div>
+
+          <!-- Confirm Password input -->
+          <div class="md-form">
+            <input
+              mdbInput
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              class="form-control"
+              [(ngModel)]="confirmPassword"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <div *ngIf="error.confirmPassword" class="alert alert-danger">
+              <div>
+                {{ error.confirmPassword }}
+              </div>
+            </div>
+            <label for="confirmPassword" class="">Confirm Password</label>
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit" mdbBtn color="primary" mdbWavesEffect>
+            Add
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
