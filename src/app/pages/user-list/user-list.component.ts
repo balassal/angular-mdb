@@ -43,14 +43,15 @@ export class UserListComponent implements OnInit {
   }
 
   searchItems() {
+    let search = this.searchText.toLowerCase();
     if (!this.searchText) {
       this.loadData();
     } else {
       this.users = this.users.filter((user) => {
         return (
-          user.username.includes(this.searchText) ||
-          user.id.toString().includes(this.searchText) ||
-          user.email.includes(this.searchText)
+          user.username.toLowerCase().includes(search) ||
+          user.id.toString().toLowerCase().includes(search) ||
+          user.email.toLowerCase().includes(search)
         );
       });
     }

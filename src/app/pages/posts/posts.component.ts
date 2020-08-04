@@ -60,17 +60,18 @@ export class PostsComponent implements OnInit, OnDestroy {
   }
 
   searchItems() {
+    let search = this.searchText.toLowerCase();
     if (!this.searchText) {
       this.loadData('newest');
     } else {
       this.posts = this.posts.filter((post) => {
         return (
-          post.title.includes(this.searchText) ||
-          post.id.toString().includes(this.searchText) ||
-          post.author.includes(this.searchText) ||
-          post.tags.includes(this.searchText) ||
-          post.content.includes(this.searchText) ||
-          post.category.title.includes(this.searchText)
+          post.title.toLowerCase().includes(search) ||
+          post.id.toString().toLowerCase().includes(search) ||
+          post.author.toLowerCase().includes(search) ||
+          post.tags.toLowerCase().includes(search) ||
+          post.content.toLowerCase().includes(search) ||
+          post.category.title.toLowerCase().includes(search)
         );
       });
     }
