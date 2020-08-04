@@ -1,1 +1,31 @@
 <h1 class="display-6 text-center mb-3">Users</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 my-auto">
+      <button type="button" mdbBtn color="indigo" mdbWavesEffect>
+        Add User
+      </button>
+    </div>
+    <div class="col my-auto">
+      <div class="md-form">
+        <input
+          type="text"
+          [(ngModel)]="searchText"
+          class="form-control"
+          id="search"
+          mdbInput
+        />
+        <label for="search">Search by username, id, or email</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <app-user
+    *ngFor="let user of users"
+    [user]="user"
+    (deleteUser)="deleteUser($event)"
+  ></app-user>
+</div>
