@@ -1,9 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import {
+  MDBBootstrapModule,
+  CollapseModule,
+  WavesModule,
+} from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +20,9 @@ import { AddPostComponent } from './pages/add-post/add-post.component';
 import { MessageComponent } from './components/message/message.component';
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
+import { UserComponent } from './components/user/user.component';
+import { EditUserComponent } from './pages/edit-user/edit-user.component';
+import { AddUserComponent } from './pages/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +36,9 @@ import { UserListComponent } from './pages/user-list/user-list.component';
     MessageComponent,
     EditPostComponent,
     UserListComponent,
+    UserComponent,
+    EditUserComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +46,9 @@ import { UserListComponent } from './pages/user-list/user-list.component';
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     FormsModule,
-    CKEditorModule,
+    CollapseModule,
+    WavesModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
