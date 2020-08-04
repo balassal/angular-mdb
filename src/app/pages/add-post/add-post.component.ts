@@ -55,9 +55,9 @@ export class AddPostComponent implements OnInit {
 
   errorIsEmpty = () => {
     return (
-      this.error.title == '' ||
-      this.error.author == '' ||
-      this.error.category == null ||
+      this.error.title == '' &&
+      this.error.author == '' &&
+      this.error.category == null &&
       this.error.content == ''
     );
   };
@@ -67,7 +67,7 @@ export class AddPostComponent implements OnInit {
   }
 
   postValidation = (post: Post) => {
-    let error = {
+    let err = {
       title: '',
       category: '',
       author: '',
@@ -75,18 +75,18 @@ export class AddPostComponent implements OnInit {
     };
 
     if (post.title == '' || post.title == null) {
-      error.title = 'Title is required!';
+      err.title = 'Title is required!';
     }
     if (post.category == null) {
-      error.category = 'Category is required!';
+      err.category = 'Category is required!';
     }
     if (post.author == '' || post.author == null) {
-      error.author = 'Author is required!';
+      err.author = 'Author is required!';
     }
     if (post.content == '' || post.content == null) {
-      error.content = 'Content is required!';
+      err.content = 'Content is required!';
     }
 
-    return error;
+    return err;
   };
 }
